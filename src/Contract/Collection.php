@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Collection\Contract;
 
-use Collection\Collection\Exception\IndexOutOfBoundException;
+use Collection\Collection\Exception\IndexOutOfBoundsException;
 use TypeError;
 
 interface Collection
@@ -15,7 +15,7 @@ interface Collection
     /** @throws TypeError */
     public function add(Item $object): void;
 
-    /** @throws IndexOutOfBoundException */
+    /** @throws IndexOutOfBoundsException */
     public function get(int $index): Item;
 
     public function toArray(): array;

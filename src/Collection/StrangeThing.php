@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Collection\Collection;
 
-use Collection\Collection\Exception\IndexOutOfBoundException;
+use Collection\Collection\Exception\IndexOutOfBoundsException;
 use Collection\Contract\Collection;
 use Collection\Contract\Item;
 use Collection\Infrastructure\EmptyValueObject;
@@ -34,7 +34,7 @@ class StrangeThing extends EmptyValueObject implements Collection
     public function get(int $index): Item
     {
         if ($index < 0 || $index >= count($this[self::DATA])) {
-            throw IndexOutOfBoundException::create($index);
+            throw IndexOutOfBoundsException::create($index);
         }
         return $this[self::DATA][$index];
     }

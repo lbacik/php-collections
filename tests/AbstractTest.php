@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests;
 
-use Collection\Collection\Exception\IndexOutOfBoundException;
+use Collection\Collection\Exception\IndexOutOfBoundsException;
 use Collection\Contract\Collection;
 use Collection\Contract\Item;
 use PHPUnit\Framework\TestCase;
@@ -44,8 +44,8 @@ abstract class AbstractTest extends TestCase
      */
     public function testGet(array $data, int $index, $expected): void
     {
-        if ($expected instanceof IndexOutOfBoundException) {
-            $this->expectException(IndexOutOfBoundException::class);
+        if ($expected instanceof IndexOutOfBoundsException) {
+            $this->expectException(IndexOutOfBoundsException::class);
         }
         $this->collection->init($data);
         $this->assertSame($expected, $this->collection->get($index));
@@ -119,14 +119,14 @@ abstract class AbstractTest extends TestCase
             [
                 [],
                 1,
-                IndexOutOfBoundException::create(1),
+                IndexOutOfBoundsException::create(1),
             ],
             [
                 [
                     new class implements Item {},
                 ],
                 1,
-                IndexOutOfBoundException::create(1),
+                IndexOutOfBoundsException::create(1),
             ],
             [
                 [

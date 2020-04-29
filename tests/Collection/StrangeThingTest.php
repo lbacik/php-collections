@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Collection;
 
-use Collection\Collection\Exception\IndexOutOfBoundException;
+use Collection\Collection\Exception\IndexOutOfBoundsException;
 use Collection\Collection\StrangeThing;
 use Tests\AbstractTest;
 use TypeError;
@@ -45,8 +45,8 @@ class StrangeThingTest extends AbstractTest
      */
     public function testGet(array $data, int $index, $expected): void
     {
-        if ($expected instanceof IndexOutOfBoundException) {
-            $this->expectException(IndexOutOfBoundException::class);
+        if ($expected instanceof IndexOutOfBoundsException) {
+            $this->expectException(IndexOutOfBoundsException::class);
         }
         $collection = StrangeThing::create($data);
         $this->assertSame($expected, $collection->get($index));

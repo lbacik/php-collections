@@ -6,7 +6,7 @@ namespace Collection\Collection\Exception;
 
 use RuntimeException;
 
-class IndexOutOfBoundException extends RuntimeException
+class IndexOutOfBoundsException extends RuntimeException
 {
     public static function create(int $index): self
     {
