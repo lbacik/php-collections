@@ -8,7 +8,6 @@ use Collection\Collection\Exception\IndexOutOfBoundsException;
 use Collection\Contract\Collection;
 use Collection\Contract\Item;
 use PHPUnit\Framework\TestCase;
-use stdClass;
 use TypeError;
 
 abstract class AbstractTest extends TestCase
@@ -60,7 +59,7 @@ abstract class AbstractTest extends TestCase
             ],
             [
                 'data' => [
-                    new stdClass(),
+                    new class {},
                 ],
                 'error' => true,
             ],
@@ -74,7 +73,7 @@ abstract class AbstractTest extends TestCase
             [
                 'data' => [
                     new class implements Item {},
-                    new stdClass(),
+                    new class {},
                     new class implements Item {},
                 ],
                 'error' => true,
@@ -87,28 +86,28 @@ abstract class AbstractTest extends TestCase
     {
         return [
             [
-                null,
-                true,
+                'item' => null,
+                'error' => true,
             ],
             [
-                'foo',
-                true,
+                'item' => 'foo',
+                'error' => true,
             ],
             [
-                12,
-                true,
+                'item' => 12,
+                'error' => true,
             ],
             [
-                [],
-                true,
+                'item' => [],
+                'error' => true,
             ],
             [
-                new stdClass(),
-                true,
+                'item' => new class {},
+                'error' => true,
             ],
             [
-                new class implements Item {},
-                false
+                'item' => new class implements Item {},
+                'error' => false
             ],
         ];
     }
