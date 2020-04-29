@@ -11,7 +11,7 @@ class SimpleStatic extends Traditional
     public static function create(Item ...$items): self
     {
         $collection = new static();
-        (fn($data) => $this->data = $data)
+        (fn(array $data) => $this->data = $data)
             ->call($collection, $items);
         return $collection;
     }
